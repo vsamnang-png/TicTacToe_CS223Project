@@ -3,22 +3,21 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class TicTacToe extends Application{
+public class MainApp extends Application{
 
     @Override
-    public void start(Stage primaryStage)
-    {
-        GridPane grid = new GridPane();
-        TicTacToeGame game = new TicTacToeGame(grid);
+    public void start(Stage stage) {
+        GameModel model = new GameModel();
+        GameView view = new GameView();
+        new GameController(model, view);
 
-        Scene scene = new Scene(grid, 300, 300);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("TicTacToe");
-        primaryStage.show();
+        Scene scene = new Scene(view.getRoot(), 350, 450);
+        stage.setTitle("Tic Tac Toe");
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch(args);
     }
 }
