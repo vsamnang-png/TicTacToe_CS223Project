@@ -1,38 +1,40 @@
 public class GameController {
+
     private GameModel model;
     private GameView view;
 
-    public GameController (GameModel model, GameView view)
-    {
+    public GameController(GameModel model, GameView view) {
         this.model = model;
         this.view = view;
         init();
     }
 
-    private void init()
-    {
-        for (int r = 0; r < 3; r++)
-            for (int c = 0; c < 3; c++)
-            {
+    private void init() {
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
                 final int row = r;
                 final int col = c;
                 view.getButton(r, c).setOnAction(e -> handleMove(row, col));
             }
+        }
+
+        view.getResetButton().setOnAction(e -> resetGame());
     }
 
-    view.getResetButton().setOnAction(e -> resetGame());
-
-    private void handleMove(int row, int col)
-    {
+    private void handleMove(int row, int col) {
         if (!model.placeMark(row, col)) return;
 
         String current = model.getCurrentPlayer();
         view.getButton(row, col).setText(current);
 
-        if (model.checkWin(current))
-        {
-            view.setStatus(current + " Win!");
+        if (model.checkWin(current)) {
+            view.setStatus(current + " Wins!");
             view.disableBoard();
+            return;
+        }
+
+        if (model.isDraw()) {
+            view.setStatus("Draw!");
             return;
         }
 
@@ -40,10 +42,10 @@ public class GameController {
         view.setStatus(model.getCurrentPlayer() + "'s Turn");
     }
 
-    private void resetGame()
-    {
+    private void resetGame() {
         model.reset();
         view.resetBoard();
         view.setStatus("X's Turn");
     }
 }
+
