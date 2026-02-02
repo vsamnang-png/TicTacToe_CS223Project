@@ -3,7 +3,7 @@ TicTacToe_CS223Project
 [Tic-Tac-Toe](https://github.com/your-username/TicTacToe_CS223Project)
 
 
-Tic-Tac-Toe Game developed on Java with JavaFX package by Kibriyo Shomirzoeva and Vattanak Samnan.
+Tic-Tac-Toe Game developed on Java with JavaFX package by Kibriyo Shomirzoeva and Vattanak Samnang.
 This project is a Tic Tac Toe game developed using JavaFX and structured following the MVC (Model–View–Controller) design pattern.
 Tic-tac-toe is played on a three-by-three grid by two players, who alternately place the marks X and O in one of the nine spaces in the grid.
 Game is played between two players 'X' and 'O'.
@@ -103,7 +103,7 @@ Manages the graphical user interface (GUI) using JavaFX components.
 **UI Components Used:**
 * Button
 * Label
-8 GridPane
+* GridPane
 * VBox
 **Key Concept:**
 The view only displays data and UI elements. It does not contain game logic.
