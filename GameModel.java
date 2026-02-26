@@ -11,7 +11,7 @@ public class GameModel { // Define a public class named GameModel
     // Constructor - runs when a new GameModel object is created
     public GameModel() {
         // Initialize the board as a 3x3 grid
-        board = new String[3][3];
+        board = new String[5][5];
         // Set the starting player to "X"
         currentPlayer = "\uD83D\uDE00";
     }
@@ -38,7 +38,7 @@ public class GameModel { // Define a public class named GameModel
 
         // If current player is "X", change to "O"
         // Otherwise change to "X"
-        currentPlayer = currentPlayer.equals("\uD83D\uDE00") ? "☹" : "\uD83D\uDE00";
+        currentPlayer = currentPlayer.equals("\uD83D\uDE00") ? "\uD83D\uDE14" : "\uD83D\uDE00";
     }
 
     // Method to check if a specific player has won
@@ -84,7 +84,7 @@ public class GameModel { // Define a public class named GameModel
     // Method to reset the game
     public void reset() {
         // Create a new empty 3x3 board
-        board = new String[3][3];
+        board = new String[5][5];
         // Reset starting player back to "X"
         currentPlayer = "\uD83D\uDE00";
     }
@@ -92,9 +92,9 @@ public class GameModel { // Define a public class named GameModel
     // Method to check if the game is a draw
     public boolean isDraw() {
         // Loop through all rows
-        for (int r = 0; r < 3; r++) {
+        for (int r = 0; r < 5; r++) {
             // Loop through all columns
-            for (int c = 0; c < 3; c++) {
+            for (int c = 0; c < 5; c++) {
                 // If any cell is still empty, it's NOT a draw
                 if (board[r][c] == null) {
                     return false;
