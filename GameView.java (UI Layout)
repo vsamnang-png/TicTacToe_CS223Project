@@ -1,47 +1,83 @@
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
+import javafx.geometry.Pos; // Import Pos class to control alignment (like CENTER)
+import javafx.scene.Parent; // Import Parent class (base class for all JavaFX layout containers)
+import javafx.scene.control.Button; // Import Button control
+import javafx.scene.control.Label; // Import Label control (for showing text)
+import javafx.scene.layout.GridPane; // Import GridPane layout (for 2D grid layout)
+import javafx.scene.layout.VBox; // Import VBox layout (vertical layout container)
+import javafx.scene.text.Font; // Import Font class (to change text size/style)
+import org.w3c.dom.ls.LSOutput;
 
+// Define a public class named GameView
 public class GameView {
+    // 2D array of Buttons to represent 3x3 Tic-Tac-Toe grid
     private Button[][] buttons = new Button[3][3];
+    // Label to display game status (e.g., "X's Turn")
     private Label statusLabel = new Label();
+    // Reset button to restart the game
     private Button resetButton = new Button("Reset");
+    // VBox layout (vertical box) to hold all UI elements
+    // 15 = spacing between children
     private VBox root = new VBox(15);
 
+    // Constructor - runs when GameView object is created
     public GameView() {
+        // Set font size of status label to 20
         statusLabel.setFont(new Font(20));
-        statusLabel.setText("X's Turn");
+        // Set initial text to show first player's turn
+        statusLabel.setText("\uD83D\uDE00's Turn");
+        // Create a GridPane layout for the board
         GridPane grid = new GridPane();
+        // Align the grid to the center
         grid.setAlignment(Pos.CENTER);
 
+        // Loop through rows (0 to 2)
         for (int r = 0; r < 3; r++) {
+            // Loop through columns (0 to 2)
             for (int c = 0; c < 3; c++) {
+                // Create a new empty button
                 Button btn = new Button("");
+                // Set preferred size of each button (100x100 pixels)
                 btn.setPrefSize(100, 100);
+                // Set font size of button text to 32
                 btn.setFont(new Font(32));
+                // Store button in the 2D array
                 buttons[r][c] = btn;
+                // Add button to grid at column c and row r
                 grid.add(btn, c, r);
             }
         }
+        // Align everything inside VBox to center
         root.setAlignment(Pos.CENTER);
+        // Add status label, grid, and reset button into VBox
         root.getChildren().addAll(statusLabel, grid, resetButton);
     }
 
+    // Method to return the root layout (used in Scene)
     public Parent getRoot() { return root; }
-    public Button getButton(int r, int c) { return buttons[r][c]; }
-    public Button getResetButton() { return resetButton; }
-    public void setStatus(String text) { statusLabel.setText(text); }
+    // Method to get a specific button by row and column
+    public Button getButton(int r, int c) { return buttons[r][c]; } // Return button at position
+    // Method to get the reset button
+    public Button getResetButton() { return resetButton; } // Return reset button
+    // Method to update the status label text
+    public void setStatus(String text) { statusLabel.setText(text); }// Change label text
+    // Method to disable all buttons on the board
     public void disableBoard() {
-        for (Button[] row : buttons) for (Button b : row) b.setDisable(true);
+        // Enhanced for loop: iterate through each row
+        for (Button[] row : buttons)
+            // Iterate through each button in the row
+            for (Button b : row)
+                // Disable the button (cannot click)
+                b.setDisable(true);
     }
+    // Method to reset the board UI
     public void resetBoard() {
+        // Loop through each row of buttons
         for (Button[] row : buttons) {
+            // Loop through each button in the row
             for (Button b : row) {
+                // Clear button text
                 b.setText("");
+                // Enable the button again
                 b.setDisable(false);
             }
         }
