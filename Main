@@ -10,7 +10,7 @@ public class MainApp extends Application{
         GameView view = new GameView();
         new GameController(model, view);
 
-        Scene scene = new Scene(view.getRoot(), 350, 450);
+        Scene scene = new Scene(view.getRoot(), 400, 500);
         stage.setTitle("Tic Tac Toe");
         stage.setScene(scene);
         stage.show();
