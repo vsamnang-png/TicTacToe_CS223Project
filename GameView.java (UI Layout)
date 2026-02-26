@@ -10,7 +10,7 @@ import org.w3c.dom.ls.LSOutput;
 // Define a public class named GameView
 public class GameView {
     // 2D array of Buttons to represent 3x3 Tic-Tac-Toe grid
-    private Button[][] buttons = new Button[3][3];
+    private Button[][] buttons = new Button[5][5];
     // Label to display game status (e.g., "X's Turn")
     private Label statusLabel = new Label();
     // Reset button to restart the game
@@ -31,13 +31,13 @@ public class GameView {
         grid.setAlignment(Pos.CENTER);
 
         // Loop through rows (0 to 2)
-        for (int r = 0; r < 3; r++) {
+        for (int r = 0; r < 5; r++) {
             // Loop through columns (0 to 2)
-            for (int c = 0; c < 3; c++) {
+            for (int c = 0; c < 5; c++) {
                 // Create a new empty button
                 Button btn = new Button("");
                 // Set preferred size of each button (100x100 pixels)
-                btn.setPrefSize(100, 100);
+                btn.setPrefSize(150, 150);
                 // Set font size of button text to 32
                 btn.setFont(new Font(32));
                 // Store button in the 2D array
